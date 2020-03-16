@@ -1,0 +1,57 @@
+:root {
+    font-size: 62.5%;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    margin:0;
+    font-size: $root-font-size * 1em;
+    @include line-height(body);
+    overflow: hidden;
+}
+
+img {
+	height: auto; /* Make sure images are scaled correctly. */
+	max-width: 100%; /* Adhere to container width. */
+    &#{get-attr(center, class, page, img)} {
+		@include center-block;
+    }
+}
+
+/* Make sure embeds and iframes fit their containers. */
+embed,
+iframe,
+object {
+	max-width: 100%;
+}
+
+figure {
+	margin: 1em 0; /* Extra wide images within figure tags don't overflow the content area. */
+}
+
+a {
+    color: inherit;
+}
+
+dt {
+    font-weight: bold;
+}
+
+dd {
+    margin: 0 1.5em 1.5em;
+}
+
+/* Text Elements */
+@import "text";
+
+/* Tables */
+@import "tables";

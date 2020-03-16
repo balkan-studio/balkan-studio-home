@@ -1,0 +1,21 @@
+$layout-name: 'default';
+@function layout($component) {
+    $n: unquote('#{$component}-layout-#{$layout-name}');
+    @return $n;
+}
+
+@import "page";
+@import "header";
+@import "content";
+
+@include theme-style((
+    '#{get-attr(page, id)}.layout-#{$layout-name}': (
+        components: ( layout(page) ),
+        '#{get-attr(header, class, page)}': (
+           components: ( layout(header) )
+        ),
+        '#{get-attr(content, class, page)}': (
+            components: ( layout(content), element_layout )
+        )
+    )
+));

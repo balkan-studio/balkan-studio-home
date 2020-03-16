@@ -1,0 +1,14 @@
+@include set-component(element_layout) {
+    #{get-attr(container, class, page, video)} {
+        video {
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+}
+
+/*--------------------------------------------------------------
+# Layout Default 
+--------------------------------------------------------------*/
+@import 'default/layout';

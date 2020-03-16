@@ -1,0 +1,28 @@
+@import "fonts";
+
+@include set-component(icon-font) {
+    font-feature-settings: "salt" 2;  /* Enable ligatures for IE 10+, Edge */
+    text-rendering: optimizeLegibility; /* Force ligatures for Webkit, Blink, Gecko */
+    font-variant-ligatures: contextual;
+    font-family: 'NFFC', monospace;
+    &.medium {
+        @include font-size(2); 
+    }
+}
+
+@include set-component(noto-sans) {
+    font-family: 'Noto Sans', sans-serif;
+}
+
+$typography: (
+    'body': (
+        components: noto-sans,
+    ),
+    '#{get-attr(icons, class)}': (
+        components: icon-font,
+        font-style: normal
+    ),
+);
+
+@include theme-style($typography);
+

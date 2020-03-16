@@ -1,0 +1,1 @@
+sass typography.scss:../../static/css/typography.css --style compressed --sourcemap=none

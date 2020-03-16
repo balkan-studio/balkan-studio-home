@@ -1,0 +1,37 @@
+@function get-attr-list($type, $keys) {
+    $attr-list: ();
+    @if $site-attr-lists {
+        @each $name, $value in map-get($site-attr-lists, $type) {
+            @if type-of($keys) == 'list' and index($keys, $name) {
+                $attr-list: append($attr-list, $value, comma);
+            }
+
+            @else if $keys == $name {
+                $attr-list: append($attr-list, $value, comma);
+            }
+        }
+    }
+    @return $attr-list;
+}
+
+@function get-attr($keys, $value, $args...) {
+    $attr-list: ();
+
+    @if length($args) == 0 {
+        @each $key in $keys {
+            $key-value: map-deep-get($site-attr, $keys, $value);
+            $attr-list: append($attr-list, unquote($key-value), comma);
+        }
+    }
+    @else {
+        $parent: map-deep-get($site-attr, $args...);
+        @if type-of($parent) == 'map' {
+            @each $key in $keys {
+                $key-value: map-deep-get($parent, $key, $value);
+                // @debug $key-value;
+                $attr-list: append($attr-list, unquote($key-value), comma);
+            }
+        }
+    }
+    @return $attr-list;
+}
