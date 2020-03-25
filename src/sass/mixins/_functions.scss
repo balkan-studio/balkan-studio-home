@@ -1,5 +1,5 @@
 @function strip-unit($number) {
-  @if type-of($number) == 'number' and not unitless($number) {
+  @if type-of($number) == "number" and not unitless($number) {
     @return $number / ($number * 0 + 1);
   }
 
@@ -11,13 +11,15 @@
   $solution: false;
 
   @for $i from 1 through 10 {
-    @if abs(2 * $x0) < 0,00000000000001 { // Don't want to divide by a number smaller than this
+    @if abs(2 * $x0) < 0, 00000000000001 {
+      // Don't want to divide by a number smaller than this
       $solution: false;
     }
 
     $x1: $x0 - ($x0 * $x0 - abs($r)) / (2 * $x0) !global;
 
-    @if ( abs($x1 - $x0) / abs($x1)) < 0,0000001 { // 7 digit accuracy is desired
+    @if (abs($x1 - $x0) / abs($x1)) < 0, 0000001 {
+      // 7 digit accuracy is desired
       $solution: true;
     }
 
@@ -29,12 +31,10 @@
     // (√xy = √x√y) => √-$r = √-1√$r
     @if $r < 0 {
       @return $x1 #{i};
-    }
-    @else {
+    } @else {
       @return $x1;
     }
-  }
-  @else {
+  } @else {
     @return "No solution";
   }
 }
@@ -51,45 +51,47 @@
   @return $value;
 }
 
-@function map-deep-get($map, $keys...){
-    @each $key in $keys {
-        $map: map-get($map, $key);
-    }
-    @return $map;
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+  @return $map;
 }
 
 @function mapreverse($map) {
-    $result: null;
+  $result: null;
 
-    @if type-of($map) == "map" {
-        $keys: map-keys($map);
-        $map-reversed: ();
+  @if type-of($map) == "map" {
+    $keys: map-keys($map);
+    $map-reversed: ();
 
-        @for $i from length($keys) through 1 {
-            $map-reversed: map-merge(
-                $map-reversed,
-                (nth($keys, $i): map-get($map, nth($keys, $i)))
-            );
-        }
-
-        @if type-of($map-reversed) == "map" {
-            $result: $map-reversed;
-        } @else {
-            @warn 'There was an error reversing the order of "#{$map}"';
-        }
-    } @else {
-        @warn '"#{$map}" is not a valid map';
+    @for $i from length($keys) through 1 {
+      $map-reversed: map-merge(
+        $map-reversed,
+        (
+          nth($keys, $i): map-get($map, nth($keys, $i))
+        )
+      );
     }
 
-    @return $result;
+    @if type-of($map-reversed) == "map" {
+      $result: $map-reversed;
+    } @else {
+      @warn 'There was an error reversing the order of "#{$map}"';
+    }
+  } @else {
+    @warn '"#{$map}" is not a valid map';
+  }
+
+  @return $result;
 }
 
 @function root_size($size, $unit: null) {
-    $em: $size / $root-font-size;
-    @if $unit == em {
-        $em: $em * 1em;
-    }
-    @return $em; 
+  $em: $size / $root-font-size;
+  @if $unit == em {
+    $em: $em * 1em;
+  }
+  @return $em;
 }
 
 @function calculateRem($size) {
@@ -98,14 +100,26 @@
 }
 
 @function non-destructive-map-merge($parent-map, $child-map) {
-	$result: $parent-map;
-	@each $key, $value in $child-map {
-		@if (not map-has-key($result, $key)) or (type-of(map-get($result, $key)) != type-of($value)) or (not (type-of(map-get($result, $key)) == map and type-of($value) == map)) {
-			$result: map-merge($result, ($key: $value));
-		}
-		@else {
-			$result: map-merge($result, ($key: non-destructive-map-merge(map-get($result, $key), $value)));
-		}
-	}
-	@return $result;
+  $result: $parent-map;
+  @each $key, $value in $child-map {
+    @if (not map-has-key($result, $key)) or
+      (type-of(map-get($result, $key)) != type-of($value)) or
+      (not (type-of(map-get($result, $key)) == map and type-of($value) == map))
+    {
+      $result: map-merge(
+        $result,
+        (
+          $key: $value
+        )
+      );
+    } @else {
+      $result: map-merge(
+        $result,
+        (
+          $key: non-destructive-map-merge(map-get($result, $key), $value)
+        )
+      );
+    }
+  }
+  @return $result;
 }

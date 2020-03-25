@@ -1,4 +1,3 @@
 <svelte:head>
-	<title>Balkan</title>
+  <title>Balkan</title>
 </svelte:head>
-
