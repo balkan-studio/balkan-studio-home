@@ -1,3 +1,3 @@
 <style lang="scss" global>
- @import "../sass/global";
+  @import "../sass/global";
 </style>

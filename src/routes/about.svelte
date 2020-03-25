@@ -1,6 +1,5 @@
 <script>
   import Page from "$components/Page.svelte";
-  import { hello } from "$stores/temp";
 </script>
 
 <style>
@@ -8,8 +7,9 @@
 </style>
 
 <svelte:head>
-  <title>{$hello}</title>
+  <title>Balkan</title>
 </svelte:head>
+
 <Page>
   <header slot="header" class="page-header">
     <h1 class="page-title">About this site</h1>
