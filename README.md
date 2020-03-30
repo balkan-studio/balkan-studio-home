@@ -2,6 +2,6 @@
 
 TODO
 
-* [ ] video
-  * [ ] set up cloudinary for video optimization
-* [ ] env variables
+- [x] video
+  - [x] set up cloudinary for video optimization
+- [ ] env variables
