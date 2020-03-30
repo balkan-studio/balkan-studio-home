@@ -8,9 +8,11 @@
 </style>
 
 <svelte:head>
-  <script src="js/anime.min.js"></script>
+  <script src="js/anime.min.js">
+
+  </script>
 </svelte:head>
 <Logo />
 <main>
-  <slot/>
+  <slot />
 </main>

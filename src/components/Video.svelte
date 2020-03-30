@@ -1,6 +1,6 @@
 <script>
   import Source from "./Video/Source.svelte";
-  import Zoomer from "./Video/Zoomer.svelte";
+  import Wrap from "./Video/Wrap.svelte";
   import { COLORS } from "$shared/constants";
 </script>
 
@@ -20,7 +20,7 @@
 </style>
 
 <div style="--background:{COLORS.background}" id="background">
-  <Zoomer>
+  <Wrap>
     <Source />
-  </Zoomer>
+  </Wrap>
 </div>

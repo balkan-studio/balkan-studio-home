@@ -1,27 +1,32 @@
 <script>
-    function anim(node) {
-        var logoAnimation =  anime.timeline({
-            targets: node,
-            easing: 'easeInOutSine',
-            direction: 'forwards',
-            duration: 1000,
-        })
-        logoAnimation.add({
-            strokeDashoffset: [anime.setDashoffset, 0],
-            delay: function(el, i) { return i * 250},
-        })
-        logoAnimation.add({
-            targets: node,
-            duration: 500,
-            fill: '#eee',
-        })
-        return {
-            
-            destroy() {
+  import { menuOpen } from "$stores";
 
-            }
-        }
-    }
+  function anim(node) {
+    var logoAnimation = anime.timeline({
+      targets: node,
+      easing: "easeInOutSine",
+      direction: "forwards",
+      duration: 1000
+    });
+    logoAnimation.add({
+      strokeDashoffset: [anime.setDashoffset, 0],
+      delay: function(el, i) {
+        return i * 250;
+      }
+    });
+    logoAnimation.add({
+      targets: node,
+      duration: 200,
+      fill: "#eee"
+    });
+    return {
+      destroy() {}
+    };
+  }
+
+  function openMenu() {
+    menuOpen.set(!$menuOpen);
+  }
 </script>
 
 <style>
@@ -32,7 +37,7 @@
     left: 5%;
     top: 50%;
     margin-top: -35px;
-    z-index: 8;
+    z-index: 4;
   }
   svg:hover {
     cursor: pointer;
@@ -42,18 +47,22 @@
 </style>
 
 <svg
+  on:click={openMenu}
   width="85"
   height="141"
   viewBox="0 0 85 141"
   fill="none"
   xmlns="http://www.w3.org/2000/svg">
-    <g fill="none" fill-rule="evenodd" stroke="#eee" stroke-width="2">
-      <path
-        d="M0 140.807H21.0155C59.8407 139.77 84.2401 128.358 84.2401 97.7535C84.2401
-        65.5929 59.6626 56.4288 23.5089 56.4288V34.8155H44.3462C60.1969 34.8155
-        68.5675 30.6657 74.4447 24.0953V0.407104C66.4303 6.45883 60.1969 12.5106
-        43.812 12.5106H0V140.807ZM23.5089 120.404V76.3131C43.9901 76.3131 59.8407
-        76.6589 59.8407 97.7535C59.8407 118.675 43.9901 120.404 23.5089 120.404Z"
-        use:anim ><path/>
-    </g>
+  <g fill="none" fill-rule="evenodd" stroke="#eee" stroke-width="5">
+    <path
+      d="M0 140.807H21.0155C59.8407 139.77 84.2401 128.358 84.2401
+      97.7535C84.2401 65.5929 59.6626 56.4288 23.5089
+      56.4288V34.8155H44.3462C60.1969 34.8155 68.5675 30.6657 74.4447
+      24.0953V0.407104C66.4303 6.45883 60.1969 12.5106 43.812
+      12.5106H0V140.807ZM23.5089 120.404V76.3131C43.9901 76.3131 59.8407 76.6589
+      59.8407 97.7535C59.8407 118.675 43.9901 120.404 23.5089 120.404Z"
+      use:anim>
+      <path />
+    </path>
+  </g>
 </svg>

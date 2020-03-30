@@ -1,5 +1,5 @@
 <script>
-  import { scrollPosY } from "$stores";
+  import { scrollPosY, menuOpen } from "$stores";
 </script>
 
 <style>
@@ -11,16 +11,11 @@
     left: 0;
     box-sizing: border-box;
     padding: 5% 10%;
-  }
-  p {
-    color: white;
-    position: fixed;
-    top: 0;
-    left: 2rem;
+    transition: 0.2s;
+    filter: blur(var(--blur));
   }
 </style>
 
-<div>
-  <p>{$scrollPosY}</p>
+<div style="--blur:{$menuOpen ? '5px' : '0px'}">
   <slot />
 </div>
