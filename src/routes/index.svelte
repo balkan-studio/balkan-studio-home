@@ -1,5 +1,6 @@
 <script>
   import Video from "$components/video/index.svelte";
+  import ScrollContainer from "$components/scrollContainer/index.svelte";
 </script>
 
 <style>
@@ -10,4 +11,6 @@
   <title>Balkan</title>
 </svelte:head>
 
-<Video />
+<ScrollContainer>
+  <Video />
+</ScrollContainer>

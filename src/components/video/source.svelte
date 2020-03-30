@@ -8,8 +8,7 @@
       controls: false,
       autoplay: true,
       muted: true,
-      style:
-        "box-sizing: border-box; padding: 5% 10%; position: absolute; top: 0; left: 0;"
+      loop: true
     })
     .transformation()
     .height("100%")

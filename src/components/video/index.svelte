@@ -1,10 +1,11 @@
 <script>
   import Source from "./source.svelte";
+  import Zoomer from "./zoomer.svelte";
   import { COLORS } from "$shared/constants";
 </script>
 
 <style>
-  #video-wrap {
+  #background {
     height: 100%;
     width: 100%;
     object-fit: fill;
@@ -18,6 +19,8 @@
   }
 </style>
 
-<div style="--background:{COLORS.background}" id="video-wrap">
-  <Source />
+<div style="--background:{COLORS.background}" id="background">
+  <Zoomer>
+    <Source />
+  </Zoomer>
 </div>
