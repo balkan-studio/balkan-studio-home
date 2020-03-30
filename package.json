@@ -12,6 +12,7 @@
     "test": "run-p --race dev cy:run"
   },
   "dependencies": {
+    "cloudinary-core": "^2.8.2",
     "compression": "^1.7.1",
     "glob": "^7.1.6",
     "polka": "next",
