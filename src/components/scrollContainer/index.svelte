@@ -1,7 +1,5 @@
 <script>
   import { scrollPosY } from "$stores";
-
-  console.log(window.innerHeight + $scrollPosY);
 </script>
 
 <style>

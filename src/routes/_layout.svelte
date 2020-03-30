@@ -1,4 +1,5 @@
 <script>
+  import Logo from "$components/logo/index.svelte";
   let items = [{ title: "Home", slug: "/" }];
 </script>
 

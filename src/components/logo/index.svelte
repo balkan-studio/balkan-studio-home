@@ -1,0 +1,41 @@
+<script>
+  import { draw } from "svelte/transition";
+  import { quintOut } from "svelte/easing";
+
+  let start = false;
+  function go() {
+    start = true;
+  }
+</script>
+
+<style>
+  svg {
+    height: 75px;
+    width: 75px;
+    position: fixed;
+    left: 5%;
+    top: 50%;
+    margin-top: -35px;
+    z-index: 8;
+  }
+  svg:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: transform 0.2s;
+  }
+</style>
+
+<svg
+  width="85"
+  height="141"
+  viewBox="0 0 85 141"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M0 140.807H21.0155C59.8407 139.77 84.2401 128.358 84.2401 97.7535C84.2401
+    65.5929 59.6626 56.4288 23.5089 56.4288V34.8155H44.3462C60.1969 34.8155
+    68.5675 30.6657 74.4447 24.0953V0.407104C66.4303 6.45883 60.1969 12.5106
+    43.812 12.5106H0V140.807ZM23.5089 120.404V76.3131C43.9901 76.3131 59.8407
+    76.6589 59.8407 97.7535C59.8407 118.675 43.9901 120.404 23.5089 120.404Z"
+    fill="white" />
+</svg>
