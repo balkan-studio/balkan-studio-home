@@ -1,5 +1,5 @@
 <script>
-  import Logo from "$components/logo/index.svelte";
+  import Logo from "$components/Logo.svelte";
   let items = [{ title: "Home", slug: "/" }];
 </script>
 
@@ -8,11 +8,9 @@
 </style>
 
 <svelte:head>
-  <script src="js/anime.min.js">
-
-  </script>
+  <script src="js/anime.min.js"></script>
 </svelte:head>
-
-<div>
-  <slot />
-</div>
+<Logo />
+<main>
+  <slot/>
+</main>

@@ -1,6 +1,6 @@
 <script>
-  import Source from "./source.svelte";
-  import Zoomer from "./zoomer.svelte";
+  import Source from "./Video/Source.svelte";
+  import Zoomer from "./Video/Zoomer.svelte";
   import { COLORS } from "$shared/constants";
 </script>
 
