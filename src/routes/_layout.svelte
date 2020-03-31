@@ -1,5 +1,5 @@
 <script>
-  import Logo from "$components/Logo.svelte";
+  import Header from "$components/Header.svelte";
   let items = [{ title: "Home", slug: "/" }];
 </script>
 
@@ -12,7 +12,7 @@
 
   </script>
 </svelte:head>
-<Logo />
 <main>
+  <Header />
   <slot />
 </main>
