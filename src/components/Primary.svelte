@@ -1,7 +1,8 @@
 <script>
-  import Sass from './Primary/Sass.svelte';
+  import Sass from "./Primary/Sass.svelte";
 </script>
-<style lang='scss'>
+
+<style lang="scss">
   #primary {
     height: 100vh;
     > div {
@@ -9,13 +10,14 @@
       overflow: hidden;
       position: relative;
       width: 100%;
-      height:100%;
+      height: 100%;
     }
   }
 </style>
-<div id='primary' class='theme-dark'>
+
+<div id="primary" class="theme-dark">
   <Sass />
   <div>
-    <slot></slot>
+    <slot />
   </div>
 </div>

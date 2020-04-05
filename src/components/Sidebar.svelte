@@ -1,25 +1,25 @@
 <script>
-  import { fade } from 'svelte/transition';
-  import Burger from './Burger.svelte';
-  import SocialMedia from './Sidebar/SocialMedia.svelte';
-  import ContactInfo from './Sidebar/ContactInfo.svelte';
+  import { fade } from "svelte/transition";
+  import Burger from "./Burger.svelte";
+  import SocialMedia from "./Sidebar/SocialMedia.svelte";
+  import ContactInfo from "./Sidebar/ContactInfo.svelte";
   let toggled;
   function sidebar_toggle(node) {
     function handle_click(event) {
-      toggled = !toggled; 
-    } 
-    node.addEventListener('click', handle_click);
+      toggled = !toggled;
+    }
+    node.addEventListener("click", handle_click);
 
     return {
       destroy() {
-        node.removeEventListener('click', handle_click);
+        node.removeEventListener("click", handle_click);
       }
     };
   }
 </script>
 
-<style lang='scss'>
-  @import '../sass/utils';
+<style lang="scss">
+  @import "../sass/utils";
   aside {
     flex: 4 4 0;
     position: relative;
@@ -28,7 +28,7 @@
     white-space: nowrap;
     z-index: 2;
     max-width: 25em;
-    transition: max-width .6s, background-color .6s;
+    transition: max-width 0.6s, background-color 0.6s;
     @include easing;
     &.collapse {
       max-width: get-size(6);
@@ -37,7 +37,7 @@
     > div {
       margin-top: auto;
       &.sm {
-        padding: .5em;
+        padding: 0.5em;
         max-width: get-size(6);
       }
       &.ci {
@@ -47,11 +47,11 @@
 
     header {
       z-index: 1;
-      padding: .5em;
+      padding: 0.5em;
       min-height: get-size(6);
       > span {
         display: inline-block;
-        padding: .5em .25em;
+        padding: 0.5em 0.25em;
         cursor: pointer;
       }
     }
@@ -83,19 +83,19 @@
   }
 </style>
 
-<aside id='sidebar' class='{!toggled ? "collapse" : "open"}' >
+<aside id="sidebar" class={!toggled ? 'collapse' : 'open'}>
   <header>
-    <span use:sidebar_toggle >
+    <span use:sidebar_toggle>
       <Burger {toggled} />
     </span>
   </header>
   <slot />
   {#if toggled}
-    <div class='ci' transition:fade>
+    <div class="ci" transition:fade>
       <ContactInfo />
     </div>
-  {/if} 
-  <div class='sm'>
+  {/if}
+  <div class="sm">
     {#if !toggled}
       <SocialMedia />
     {/if}

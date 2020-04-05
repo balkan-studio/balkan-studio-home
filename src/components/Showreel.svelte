@@ -14,12 +14,13 @@
     .width("100%")
     .toHtml();
 </script>
-<style lang='scss'>
+
+<style lang="scss">
   div {
     position: relative;
     &::after {
-      content: '';
-      position: absolute; 
+      content: "";
+      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
@@ -30,6 +31,7 @@
     }
   }
 </style>
+
 <div>
-{@html video}
+  {@html video}
 </div>

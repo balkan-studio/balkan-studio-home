@@ -1,8 +1,8 @@
 <script>
-  import Video from "$components/Showreel.svelte";
+  import Showreel from "$components/Showreel.svelte";
 </script>
 
-<style>
+<style lang="scss">
   .wrap {
     display: flex;
     flex-direction: column;
@@ -13,16 +13,13 @@
   <title>Balkan</title>
 </svelte:head>
 
-<Menu />
-
 <div class="wrap">
   <h1>
     A web design studio based in Reykjavík, Iceland. We design and code
     websites.
   </h1>
-
   <div style="position: relative">
     <p>contact</p>
-    <Video />
+    <Showreel />
   </div>
 </div>

@@ -1,13 +1,14 @@
 <script>
-  import Logo from './Wrapper/Logo.svelte';
+  import Logo from "./Wrapper/Logo.svelte";
 </script>
-<style lang="scss" >
-  @import '../sass/utils';
+
+<style lang="scss">
+  @import "../sass/utils";
   div {
     flex: 14 14 0;
     display: flex;
     flex-flow: column;
-    max-width: 100%
+    max-width: 100%;
   }
   main {
     position: relative;
@@ -19,16 +20,16 @@
   }
   header {
     z-index: 1;
-    padding: .5em 1em;
+    padding: 0.5em 1em;
     min-height: get-size(6);
   }
-
 </style>
-<div id='doc'>
+
+<div id="doc">
   <header>
-    <slot name='nav'></slot>
+    <slot name="nav" />
   </header>
-  <main id='main'>
-    <slot name='main'></slot>
+  <main id="main">
+    <slot name="main" />
   </main>
 </div>
