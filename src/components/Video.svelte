@@ -9,7 +9,7 @@
     height: 100%;
     width: 100%;
     object-fit: fill;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     display: flex;

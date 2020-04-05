@@ -5,7 +5,10 @@
 </script>
 
 <style>
-
+  .wrap {
+    display: flex;
+    flex-direction: column;
+  }
 </style>
 
 <svelte:head>
@@ -13,4 +16,15 @@
 </svelte:head>
 
 <Menu />
-<Video />
+
+<div class="wrap">
+  <h1>
+    A web design studio based in Reykjavík, Iceland. We design and code
+    websites.
+  </h1>
+
+  <div style="position: relative">
+    <p>contact</p>
+    <Video />
+  </div>
+</div>
