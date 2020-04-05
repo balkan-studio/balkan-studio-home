@@ -34,8 +34,12 @@
 
 <style lang="scss">
   div {
+    width: 100%;
     height: 65vh;
-    width: auto;
+    top: 0;
+    @media (max-width: 1500px) {
+      height: 63vh;
+    }
   }
 </style>
 
