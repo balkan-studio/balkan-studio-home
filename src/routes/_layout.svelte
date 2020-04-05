@@ -12,36 +12,31 @@
     padding: 0 1em;
     display: flex;
     flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center; 
     width: 100%;
     min-height: 100%;
     max-width: 64em;
   }
-
   nav {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-
 </style>
 
 <svelte:head>
-<script src="js/anime.min.js">
+  <script src="js/anime.min.js">
 
-</script>
+  </script>
 </svelte:head>
 <Primary>
-  <Sidebar>
-  </Sidebar>
+  <Sidebar />
 
   <Wrapper>
-    <nav slot='nav'>
+    <nav slot="nav">
       <Branding />
     </nav>
-    <div slot='main'>
-      <slot/>
+    <div slot="main">
+      <slot />
     </div>
   </Wrapper>
 

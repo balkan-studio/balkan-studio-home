@@ -5,5 +5,5 @@ TODO
 - [ ] video
   - [x] set up cloudinary for video optimization
   - [ ] env variables
-  - [ ] optimize video size for different screens
+  - [x] optimize video size, is never larger than full height of browser window.
   - [ ] splice video into tiny bits

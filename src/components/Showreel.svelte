@@ -11,24 +11,13 @@
     })
     .transformation()
     .height("100%")
-    .width("100%")
     .toHtml();
 </script>
 
 <style lang="scss">
   div {
-    position: relative;
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-    > video:focus {
-      outline: none;
-    }
+    height: 65vh;
+    width: auto;
   }
 </style>
 

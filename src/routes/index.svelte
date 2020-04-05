@@ -19,7 +19,6 @@
     websites.
   </h1>
   <div style="position: relative">
-    <p>contact</p>
     <Showreel />
   </div>
 </div>
