@@ -1,14 +1,12 @@
-@import "mixins/mixins-master";
-@import "variables/variables";
+@import 'utils';
 
 /*--------------------------------------------------------------
 # Elements
 --------------------------------------------------------------*/
-@import "elements/elements";
-
+@import 'elements/elements';
 
 /*--------------------------------------------------------------
-# Layouts 
+# Themes
 --------------------------------------------------------------*/
-@import "layouts/page/layouts";
+@import 'themes/themes';
 

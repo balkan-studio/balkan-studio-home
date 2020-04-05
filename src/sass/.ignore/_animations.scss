@@ -1,0 +1,30 @@
+
+@mixin transform($property...) {
+  @include prefix(transform, safe-unquote($property));
+}
+
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+  @-ms-keyframes #{$animation-name} {
+    @content;
+  }
+  @-o-keyframes #{$animation-name} {
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
+@mixin animation($property...) {
+  @include prefix(animation, safe-unquote($property), webkit);
+}
+
+@mixin transition($property...) {
+  @include prefix(transition, safe-unquote($property));
+}

@@ -1,0 +1,46 @@
+@function map-deep-get($map, $keys...){
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+  @return $map;
+}
+
+@function non-destructive-map-merge($parent-map, $child-map) {
+  $result: $parent-map;
+  @each $key, $value in $child-map {
+    @if (not map-has-key($result, $key)) or (type-of(map-get($result, $key)) != type-of($value)) or (not (type-of(map-get($result, $key)) == map and type-of($value) == map)) {
+      $result: map-merge($result, ($key: $value));
+    }
+    @else {
+      $result: map-merge($result, ($key: non-destructive-map-merge(map-get($result, $key), $value)));
+    }
+  }
+  @return $result;
+}
+
+@function map-reverse($map) {
+  $result: null;
+
+  @if type-of($map) == "map" {
+    $keys: map-keys($map);
+    $map-reversed: ();
+
+    @for $i from length($keys) through 1 {
+      $map-reversed: map-merge(
+      $map-reversed,
+      (nth($keys, $i): map-get($map, nth($keys, $i)))
+      );
+    }
+
+    @if type-of($map-reversed) == "map" {
+      $result: $map-reversed;
+    } @else {
+      @warn 'There was an error reversing the order of "#{$map}"';
+    }
+  } @else {
+    @warn '"#{$map}" is not a valid map';
+  }
+
+  @return $result;
+}
+

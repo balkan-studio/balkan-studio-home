@@ -1,0 +1,83 @@
+@import 'functions/math';
+@import 'functions/maps';
+@import 'functions/lists';
+
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+@function safe-unquote($param) {
+  @return if(type-of($param) == string, unquote($param), $param);
+}
+
+@function root-size($size, $unit: null) {
+  $em: $size / $root-font-size;
+  @if $unit == em {
+    $em: $em * 1em;
+  }
+  @return $em; 
+}
+
+@function get-attr-list($type, $keys) {
+  $attr-list: ();
+  @if $site-attr-lists {
+    @each $name, $value in map-get($site-attr-lists, $type) {
+      @if type-of($keys) == 'list' and index($keys, $name) {
+        $attr-list: append($attr-list, $value, comma);
+      }
+
+      @else if $keys == $name {
+        $attr-list: append($attr-list, $value, comma);
+      }
+    }
+  }
+  @return $attr-list;
+}
+
+@function get-attr($keys, $value, $args...) {
+  $attr-list: ();
+
+  @if $site-attr {
+    @if length($args) == 0 {
+      @each $key in $keys {
+        $key-value: map-deep-get($site-attr, $keys, $value);
+        $attr-list: append($attr-list, unquote($key-value), comma);
+      }
+    }
+    @else {
+      $parent: map-deep-get($site-attr, $args...);
+      @if type-of($parent) == 'map' {
+        @each $key in $keys {
+          $key-value: map-deep-get($parent, $key, $value);
+          // @debug $key-value;
+          $attr-list: append($attr-list, unquote($key-value), comma);
+        }
+      }
+    }
+  }
+  @return $attr-list;
+}
+
+
+@function get-size($size) {
+  $size-em: 0;
+
+  @if type-of($size) == 'number' {
+    $size-em: abs(( $size / $root-font-size ) * 1em);
+  }
+  @else {
+    @each $name, $map in $font-sizes {
+      @if $size == $name {
+        $size-em: abs(( map-get($map, size) / $root-font-size) * 1em);
+      }
+    }
+  }
+
+  @return $size-em;
+}
+
+

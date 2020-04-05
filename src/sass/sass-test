@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+fname=$1
+if [[ -z $fname ]]; then
+    sass global.scss:./.ignore/test.css --sourcemap=none
+else
+    sass $fname:./.ignore/test.css --sourcemap=none
+fi
+#sass global.scss:test.css --style compressed --sourcemap=none
+#sass global.scss:test.css --sourcemap=none

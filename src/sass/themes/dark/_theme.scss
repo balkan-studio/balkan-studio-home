@@ -1,0 +1,15 @@
+$theme-name: 'dark';
+
+$bg: get-col(dark bg);
+$fg: get-col(dark fg);
+
+@import 'props'; 
+
+@include set-props((
+  '#{get-attr(primary, id)}.theme-#{$theme-name}': (
+    components: theme( primary ),
+    '#{get-attr(sidebar, id)}': (
+      components: theme( sidebar ),
+    )
+  ),
+));

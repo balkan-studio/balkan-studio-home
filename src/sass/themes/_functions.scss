@@ -1,0 +1,52 @@
+@function theme($component) {
+  $n: unquote('#{$component}-theme-#{$theme-name}');
+  @return $n;
+}
+
+@function get-col($keys...) {
+  $list: ();
+  @each $key, $val in $keys {
+    $map: map-get($theme-colors, $key);
+    $colors: map-get($map, $val);
+    $list: join($list, $colors, space);
+  }
+  @return $list;
+}
+
+@function col($list, $idx: 1) {
+  $res: $list;
+  @if type-of($idx) == list {
+    $len: length($list);
+    @for $i from 1 through length($idx) {
+      $val: nth($idx, $i);
+      @if type-of($val) == number and $val > 0 {
+        $res: nth($res, $val);
+      }
+    }
+  }
+  @else if type-of($idx) == number {
+    $res: nth($res, $idx);
+  }
+  @else {
+      @warn "$idx: #{quote($idx)} is not a number or a list.";
+  }
+  @return $res;
+ 
+}
+
+@function heading-indent-gradient($lev, $col) {
+  $g: 'linear-gradient(to right,#{$col} 1em 1em';
+  @if $lev > 1 {
+    @for $i from 1 to ($lev) {
+      $g: $g + ', #{lighten($col, $lev * 3%)} #{$i * 1em } #{($i + 1) * 1em}';
+    }
+  }
+  $g: $g + ')';
+  @return unquote($g); 
+}
+
+@mixin prop($prop) {
+  @include set-component( theme($prop) ) {
+    @content;
+  }
+}

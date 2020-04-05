@@ -1,0 +1,62 @@
+$base-width: 3.6;
+$base-height: 1.8;
+
+$ham-width: root-size($base-width);
+$ham-height: root-size($base-height);
+$diagonal-width: root-size($base-height);
+$diagonal-height: root-size($base-width);
+
+$ham-line-thickness: .1;
+
+@mixin vertical-length {
+  width: $ham-height * 1em;
+}
+
+@mixin horizontal-length {
+  width: $ham-width * 1em;
+}
+
+@mixin diagonal-length {
+  width: sqrt(pow($diagonal-width, 2) + pow($diagonal-height, 2)) * 1em;
+}
+
+@mixin horizontal($position) {
+  @if $position == 1 {
+    transform: translate(0, 0) rotate(0);
+  }
+  @else if $position == 2 {
+    transform: translate(0, ($ham-height * .5 - $ham-line-thickness * .5 ) * 1em) rotate(0);
+  }
+  @else if $position == 3 {
+    transform: translate(0, ($ham-height - $ham-line-thickness) * 1em) rotate(0);
+  }
+  @include horizontal-length;
+}
+
+
+@mixin vertical($position) {
+  @if $position == 1 {
+    transform: translate(($ham-line-thickness * 3) * 1em, abs($ham-height * .5 - $ham-line-thickness * .5)*1em) rotate(90deg);
+  }
+  @else if $position == 2 {
+    transform: translate(($ham-line-thickness * 2) * 1em, abs($ham-height * .5 - $ham-line-thickness * .5)*1em) rotate(90deg);
+  }
+  @else if $position == 3 {
+    transform: translate(($ham-line-thickness ) * 1em, abs($ham-height * .5 - $ham-line-thickness * .5)*1em) rotate(90deg);
+  }
+  @include vertical-length;
+}
+
+@mixin diagonal ($dir:1, $length:1){
+  $rotation: 30 * $dir;
+  @for $i from 1 to $length {
+    @if $i % 2 == 0 {
+      $rotation: $rotation + (60 * $dir);
+    }
+    @else {
+      $rotation: $rotation + (120 * $dir);
+    }
+  }
+  transform: translate(0, abs($ham-height * .5 - $ham-line-thickness * .5)*1em) rotate($rotation+deg);
+  @include diagonal-length;
+}
