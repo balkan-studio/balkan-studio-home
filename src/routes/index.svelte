@@ -15,8 +15,9 @@
 
 <div class="wrap">
   <h1>
-    A web design studio based in Reykjavík, Iceland. We design and code
-    websites.
+    A web design studio based in Reykjavík, Iceland.
+    <br />
+    We design and code websites.
   </h1>
   <div style="position: relative">
     <Showreel />
