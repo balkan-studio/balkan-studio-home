@@ -10,6 +10,7 @@ import { terser } from "rollup-plugin-terser";
 import config from "sapper/config/rollup.js";
 import pkg from "./package.json";
 import sveltePreprocess from "svelte-preprocess";
+import svg from "rollup-plugin-svg-import";
 
 const mode = process.env.NODE_ENV;
 const dev = mode === "development";
@@ -62,6 +63,7 @@ export default {
     input: config.client.input(),
     output: config.client.output(),
     plugins: [
+      svg({ stringify: true }),
       alias(aliases),
       builtins(),
       json(),
@@ -117,6 +119,7 @@ export default {
     input: config.server.input(),
     output: config.server.output(),
     plugins: [
+      svg({ stringify: true }),
       alias(aliases),
       builtins(),
       json(),

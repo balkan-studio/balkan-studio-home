@@ -17,6 +17,7 @@
     "glob": "^7.1.6",
     "polka": "next",
     "querystring": "^0.2.0",
+    "rollup-plugin-svg-import": "^1.4.0",
     "sirv": "^0.4.0"
   },
   "devDependencies": {
