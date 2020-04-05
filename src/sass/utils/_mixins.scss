@@ -1,0 +1,220 @@
+@mixin set-component($placeholder) {
+  %#{$placeholder} {
+    @content;
+  }
+}
+
+@mixin get-component($placeholder) {
+  @extend %#{$placeholder};
+}
+
+@mixin set-props ($props) {
+  @each $class, $element in $props {
+
+    $components: map-get($element, components);
+    $children: map-get($element, children);
+
+    #{unquote($class)} {
+      @each $property, $value in $element {
+        @if $property != 'components' and $property != 'children' {
+          @if type-of($value) != 'map' {
+            #{$property}: $value;
+          }
+          @else if type-of($value) == 'map' {
+            @include set-props(($property: $value));
+          }
+        }
+      }
+
+      @if ($components) {
+        @each $component in $components {
+          @include get-component($component);
+        }
+      }
+
+      @if type-of($children) == 'map' {
+        @include set-props($children);
+      }
+    }
+  }
+}
+
+@mixin font-size($size) {
+  @if type-of($size) == 'number' {
+    font-size: #{abs(( $size / $root-font-size ) * 1em)};
+  }
+  @else {
+    @each $name, $map in $font-sizes {
+      @if $size == $name {
+        font-size: #{abs(( map-get($map, size) / $root-font-size ) * 1em)
+        };
+      }
+    }
+  }
+}
+
+@mixin padding($size, $positions:(t,r,b,l), $m: 1) {
+  $size_len: length($size);
+  $pos_len:  length($positions);
+
+  @if $size_len == 1 {
+    $vsize: get-size($size);
+    $sem: $vsize * $m; 
+
+    @if $pos_len == 4 {
+      padding: $sem $sem $sem $sem; 
+    }
+    @else if $pos_len {
+      @each $v in $positions { @if $v == t {
+          padding-top: $sem;
+        }
+        @else if $v == r {
+          padding-right: $sem;
+        }
+        @else if $v == b {
+          padding-bottom: $sem;
+        }
+        @else if $v == l {
+          padding-left: $sem;
+        }
+      } 
+    }
+  }
+  @else {
+    $sem: $size;
+    @for $i from 1 to $size_len+1 {
+      $vsize: get-size(nth($size, $i));
+      $vem: $vsize * $m;
+      $sem: set-nth($sem, $i, $vem);
+    }
+    padding: $sem; 
+  }
+}	
+
+@mixin margin($size, $positions:(t,r,b,l), $m: 1) {
+  $size_len: length($size);
+  $pos_len:  length($positions);
+
+  @if $size_len == 1 {
+    $vsize: get-size($size);
+    $sem: $vsize * $m; 
+
+    @if $pos_len == 4 {
+      margin: $sem $sem $sem $sem; 
+    }
+    @else if $pos_len {
+      @each $v in $positions { @if $v == t {
+          margin-top: $sem;
+        }
+        @else if $v == r {
+          margin-right: $sem;
+        }
+        @else if $v == b {
+          margin-bottom: $sem;
+        }
+        @else if $v == l {
+          margin-left: $sem;
+        }
+
+      } 
+    }
+  }
+  @else {
+    $sem: $size;
+    @for $i from 1 to $size_len+1 {
+      $vsize: get-size(nth($size, $i));
+      $vem: $vsize * $m;
+      $sem: set-nth($sem, $i, $vem);
+    }
+    margin: $sem; 
+  }
+}
+
+@mixin line-height($height) {
+  @each $name, $value in $line-height {
+    @if $height == $name {
+      line-height: $value;
+    }
+  }
+}
+
+// Print format
+@mixin print {
+  @media print {
+    @content;
+  }
+}
+
+// Fallback for I8+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity = $opacity-ie); //IE8
+}
+
+// Vendor prefixing
+@mixin prefix($property, $value, $vendors: webkit moz ms o, $default: true) {
+  @if $vendors {
+    @each $vendor in $vendors {
+      #{"-" + $vendor + "-" + $property}: #{$value};
+    }
+  }
+  @if $default {
+    #{$property}: #{$value};
+  }
+}
+
+// Center block
+@mixin center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Background gradient
+@mixin gradient($start-color, $end-color, $orientation) {
+  background: $start-color;
+  @if $orientation == 'vertical' {
+    background: -webkit-linear-gradient(top, $start-color, $end-color);
+    background: linear-gradient(to bottom, $start-color, $end-color);
+  } @else if $orientation == 'horizontal' {
+    background: -webkit-linear-gradient(left, $start-color, $end-color);
+    background: linear-gradient(to right, $start-color, $end-color);
+  } @else {
+    background: -webkit-radial-gradient(center, ellipse cover, $start-color, $end-color);
+    background: radial-gradient(ellipse at center, $start-color, $end-color);
+  }
+}
+
+// Define vertical, horizontal, or both position
+@mixin center($position) {
+  position: absolute;
+
+  @if $position == 'vertical' {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  @else if $position == 'horizontal' {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translate(-50%);
+  }
+  @else if $position == 'both' {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+}
+
+@mixin selection($prop, $bg, $fg) {
+    ::-moz-selection,
+    ::selection {
+      background-color: $bg;
+      color: $fg;
+    }
+}

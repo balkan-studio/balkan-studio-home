@@ -1,36 +1,36 @@
 table, th, tr, td {
-    border-collapse: collapse;
-    @include padding(1); 
+  border-collapse: collapse;
+  @include padding(1); 
 }
 
 table {
-    margin: 0 auto;
+  margin: 0 auto;
 
-    thead tr {
-        th  {
-            border-top: none;
-            font-weight: 600;
-        }
-        th:last-child {
-            border-right: none;
-        }
+  thead tr {
+    th  {
+      border-top: none;
+      font-weight: 600;
     }
-    tbody tr {
-        td, th {
-            border-top: none;
-            position: relative;
-            ul, ol{
-                @include padding(1, l);
-                @include margin(1, l b);
-            }
-        }
-
-        td:first-child {
-            border-left: none;
-        }
-
-        td:last-child {
-            border-right: none;
-        }
+    th:last-child {
+      border-right: none;
     }
+  }
+  tbody tr {
+    td, th {
+      border-top: none;
+      position: relative;
+      ul, ol{
+        @include padding(1, l);
+        @include margin(1, l b);
+      }
+    }
+
+    td:first-child {
+      border-left: none;
+    }
+
+    td:last-child {
+      border-right: none;
+    }
+  }
 }

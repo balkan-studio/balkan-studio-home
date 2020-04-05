@@ -1,3 +1,7 @@
+/* font-face($font-name, $file-name, $file-path, $formats:(eot,ttf), $weight: normal, $style: normal)
+ */
+
 $prefix: '../';
 
-@include font-face('NFFC', 'NFFC', '#{$prefix}fonts/nffc',(eot, ttf), 400);
+@include font-face('NFFC', 'Symbols', '#{$prefix}fonts/symbols',(eot, ttf, woff, woff2));
+@include font-face('Balkan', 'Balkan', '#{$prefix}fonts/balkan',(eot, ttf, woff, woff2));

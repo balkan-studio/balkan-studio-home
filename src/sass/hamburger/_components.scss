@@ -1,0 +1,21 @@
+@mixin burger-anim($type, $duration) {
+  $name: unquote('anim-#{$type}-l');
+  &.open {
+    @include diagonal-length;
+    @for $i from 1 to 4 {
+      div:nth-child(#{$i}) {
+        animation: $name+$i $duration;
+        animation-fill-mode: forwards; 
+      }
+    }
+  }
+  &.closed {
+    @for $i from 1 to 4 {
+      div:nth-child(#{$i}) {
+        animation: $name+$i $duration;
+        animation-direction: reverse;
+        animation-fill-mode: backwards; 
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+@import "variables";
+@import "animations";
+
+
+
+.burger {
+    height: $ham-height * 1em;
+    width: $ham-width * 1em;
+    position: relative;
+    display: block;
+    background-color: transparent;
+
+    div {
+        position: absolute;
+        width: 100%;
+        height: $ham-line-thickness * 1em;
+    }
+
+    @for $i from 1 to 4 {
+        div:nth-child(#{$i}) {
+            @include horizontal($i);
+        }
+    }
+
+}
+
+@import "components";

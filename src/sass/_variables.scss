@@ -1,0 +1,54 @@
+$root-font-size: 1.8;
+
+$font-sizes: (
+  small: (size: 1.6),
+  medium: (size: 1.8),
+  large: (size: 2.5),
+);
+
+$line-height: (
+  body: 1.2,
+);
+
+$site-attr: (
+  primary: (
+    id: '#primary'
+  ),
+  sidebar: (
+    id: '#sidebar'
+  ),
+  wrapper: (
+    id: '#doc'
+  ),
+  burger: (
+    class: '.burger'
+  ),
+  main: (
+    id: '#main',
+    page: (
+      id: '#page',
+      header: (
+        class: '.page-header',
+        title: (
+          class: '.page-title'
+        ),
+        author: (
+          class: '.author'
+        ),
+      ),
+      content: (
+        class: '.page-content',
+      ),
+    ),
+    img: (
+      center: (
+        class: '.content-image'
+      ),
+    ),
+  ),
+  icons: (
+    class: '.ic' 
+  ),
+);
+
+$headings: 'h1, h2, h3, h4, h5, h6';

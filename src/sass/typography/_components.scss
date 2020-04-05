@@ -1,0 +1,28 @@
+@include set-component(icon-font) {
+    font-family: 'NFFC';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering (from devicons, et al) */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    &.medium {
+        @include font-size(2); 
+    }
+    &.twitter::before {
+      content: '\fa44';
+    }
+    &.instagram::before {
+      content: '\f7fd';
+    }
+    &.facebook::before {
+      content: '\f70c';
+    }
+}
+
+@include set-component(balkan) {
+    font-family: 'Balkan', sans-serif;
+}

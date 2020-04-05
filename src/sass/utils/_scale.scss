@@ -1,0 +1,35 @@
+@mixin screen($size) {
+  $desktop: '(min-width: 1024px)';
+  $tablet: '(min-width: 768px) and (max-width: 1023px)';
+  $mobile: '(max-width: 767px)';
+  @if $size == desktop {
+    @media only screen and #{$desktop} {
+      @content;
+    }
+  }
+  @else if $size == tablet {
+    @media only screen and #{$tablet} {
+      @content;
+    }
+  }
+  @else if $size == mobile {
+    @media only screen and #{$mobile} {
+      @content;
+    }
+  }
+  @else if type-of($size) == list {
+    $a1: nth($size, 1);
+    $a2: nth($size, 2);
+    @debug $a2;
+    @if type-of($a1) == list {
+      $size: '(#{nth($a1, 1)}-width: #{nth($a1,  2)}) and (#{nth($a2, 1)}-width: #{nth($a2, 2)})'  
+    } @else if index(min max, $a1)  {
+      $size: '(#{$a1}-width: #{$a2})'  
+    } @else if $a1 == number and $a2 == number {
+      $size: '(min-width: #{$a1}) and (max-width: #{$a2})';
+    } 
+    @media only screen and #{$size} {
+      @content;
+    }
+  }
+}

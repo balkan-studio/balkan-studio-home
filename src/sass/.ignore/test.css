@@ -1,0 +1,159 @@
+/*--------------------------------------------------------------
+# Hamburger 
+--------------------------------------------------------------*/
+/*
+ * Type 1
+ */
+@keyframes anim-1-l1 {
+  30% {
+    opacity: 0; }
+  50% {
+    transform: translate(0, 0.5055555556em) rotate(0);
+    width: 1.6666666667em; }
+  100% {
+    opacity: 0; } }
+@keyframes anim-1-l2 {
+  50% {
+    transform: translate(0, 0.5055555556em) rotate(0);
+    width: 1.6666666667em; }
+  100% {
+    transform: translate(0, 0.5055555556em) rotate(-30deg);
+    width: 2.0030840419em; } }
+@keyframes anim-1-l3 {
+  30% {
+    opacity: 0; }
+  50% {
+    transform: translate(0, 0.5055555556em) rotate(0);
+    width: 1.6666666667em; }
+  100% {
+    transform: translate(0, 0.5055555556em) rotate(30deg);
+    width: 2.0030840419em; } }
+/*
+ * Type 2
+ */
+@keyframes anim-2-l1 {
+  25% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(0);
+    width: 1.6666666667em; }
+  50% {
+    transform: translate(0.2em, 0.5055555556em) rotate(90deg);
+    width: 1.1111111111em; }
+  100% {
+    opacity: 0; } }
+@keyframes anim-2-l2 {
+  25% {
+    transform: translate(0, 0.5055555556em) rotate(0);
+    width: 1.6666666667em; }
+  50% {
+    transform: translate(0.2em, 0.5055555556em) rotate(90deg);
+    width: 1.1111111111em; }
+  100% {
+    transform: translate(0, 0.5055555556em) rotate(330deg);
+    width: 2.0030840419em; } }
+@keyframes anim-2-l3 {
+  25% {
+    opacity: 0;
+    transform: translate(0, 1.0111111111em) rotate(0);
+    width: 1.6666666667em; }
+  50% {
+    transform: translate(0.2em, 0.5055555556em) rotate(90deg);
+    width: 1.1111111111em; }
+  100% {
+    transform: translate(0, 0.5055555556em) rotate(390deg);
+    width: 2.0030840419em; } }
+/*
+ * Type 3
+ */
+@keyframes anim-3-l1 {
+  50% {
+    transform: translate(0, 0) rotate(0);
+    width: 1.6666666667em; }
+  100% {
+    transform: translate(0, 0.5055555556em) rotate(-30deg);
+    width: 2.0030840419em; } }
+@keyframes anim-3-l2 {
+  50% {
+    transform: translate(0, 0) rotate(0);
+    width: 1.6666666667em; }
+  100% {
+    transform: translate(0, 0.5055555556em) rotate(30deg);
+    width: 2.0030840419em; } }
+@keyframes anim-3-l3 {
+  50% {
+    transform: translate(0, 0) rotate(0);
+    width: 1.6666666667em; }
+  50% {
+    opacity: 0;
+    animation-timing-function: steps(1, end); }
+  100% {
+    opacity: 0; } }
+/*
+ * Type 4
+ */
+@keyframes anim-4-l1 {
+  50% {
+    transform: translate(0, 0) rotate(0);
+    width: 1.6666666667em; }
+  100% {
+    transform: translate(0, 0.5055555556em) rotate(-30deg);
+    width: 2.0030840419em; } }
+@keyframes anim-4-l2 {
+  50% {
+    transform: translate(0, 0.5055555556em) rotate(0);
+    width: 1.6666666667em; }
+  100% {
+    transform: translate(0, 0.5055555556em) rotate(30deg);
+    width: 2.0030840419em; } }
+@keyframes anim-4-l3 {
+  50% {
+    transform: translate(0, 1.0111111111em) rotate(0);
+    width: 1.6666666667em; }
+  50% {
+    opacity: 0;
+    animation-timing-function: steps(1, end); }
+  100% {
+    opacity: 0; } }
+.burger {
+  height: 1.1111111111em;
+  width: 1.6666666667em;
+  position: relative;
+  display: block;
+  background-color: transparent; }
+  .burger div {
+    position: absolute;
+    width: 100%;
+    height: 0.1em; }
+  .burger div:nth-child(1) {
+    transform: translate(0, 0) rotate(0);
+    width: 1.6666666667em; }
+  .burger div:nth-child(2) {
+    transform: translate(0, 0.5055555556em) rotate(0);
+    width: 1.6666666667em; }
+  .burger div:nth-child(3) {
+    transform: translate(0, 1.0111111111em) rotate(0);
+    width: 1.6666666667em; }
+
+.burger.open {
+  width: 2.0030840419em; }
+  .burger.open div:nth-child(1) {
+    animation: anim-4-l1;
+    animation-fill-mode: forwards; }
+  .burger.open div:nth-child(2) {
+    animation: anim-4-l2;
+    animation-fill-mode: forwards; }
+  .burger.open div:nth-child(3) {
+    animation: anim-4-l3;
+    animation-fill-mode: forwards; }
+.burger.closed div:nth-child(1) {
+  animation: anim-4-l1;
+  animation-direction: reverse;
+  animation-fill-mode: backwards; }
+.burger.closed div:nth-child(2) {
+  animation: anim-4-l2;
+  animation-direction: reverse;
+  animation-fill-mode: backwards; }
+.burger.closed div:nth-child(3) {
+  animation: anim-4-l3;
+  animation-direction: reverse;
+  animation-fill-mode: backwards; }
