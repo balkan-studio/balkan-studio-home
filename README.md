@@ -2,6 +2,8 @@
 
 TODO
 
-- [x] video
+- [ ] video
   - [x] set up cloudinary for video optimization
-- [ ] env variables
+  - [ ] env variables
+  - [ ] optimize video size for different screens
+  - [ ] splice video into tiny bits
