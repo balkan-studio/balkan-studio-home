@@ -20,7 +20,6 @@
   @else if type-of($size) == list {
     $a1: nth($size, 1);
     $a2: nth($size, 2);
-    @debug $a2;
     @if type-of($a1) == list {
       $size: '(#{nth($a1, 1)}-width: #{nth($a1,  2)}) and (#{nth($a2, 1)}-width: #{nth($a2, 2)})'  
     } @else if index(min max, $a1)  {

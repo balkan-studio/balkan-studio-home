@@ -20,8 +20,3 @@
   <label>Phone</label>
   <a href="">{phone}</a>
 </div>
-<div>
-  <label>Follow us on</label>
-  <a href="/" target="_blank">Facebook</a>
-  <a href="/" target="_blank">Instagram</a>
-</div>

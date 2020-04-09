@@ -7,6 +7,7 @@
 </script>
 
 <style lang="scss">
+  @import './sass/vars';
   div {
     margin: 0 auto;
     padding: 0 1em;
@@ -14,7 +15,7 @@
     flex-flow: column nowrap;
     width: 100%;
     min-height: 100%;
-    max-width: 64em;
+    max-width: $main-max-width;
   }
   nav {
     display: flex;

@@ -5,7 +5,7 @@
 
 .burger {
     height: $ham-height * 1em;
-    width: $ham-width * 1em;
+    @include diagonal-length;
     position: relative;
     display: block;
     background-color: transparent;

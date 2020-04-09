@@ -1,36 +1,14 @@
-<script>
-  import { slide } from "svelte/transition";
-  import { quartIn, quartOut } from "svelte/easing";
-
-  let items = [
-    {
-      class: "facebook",
-      href: ""
-    },
-    {
-      class: "instagram",
-      href: ""
-    }
-  ];
-</script>
-
-<style>
+<style lang="scss">
   div {
-    text-align: center;
-    padding-top: 1em;
-  }
-  a {
-    text-decoration: none;
-    font-size: 2em;
+    padding: 0.5em 0;
+    a {
+      display: block;
+    }
   }
 </style>
 
-{#each items as item}
-  <div
-    in:slide={{ delay: 250, duration: 500, easing: quartIn }}
-    out:slide={{ delay: 50, duration: 500, easing: quartOut }}>
-    <a href={item.href} target="_blank">
-      <i class="ic {item.class}" />
-    </a>
-  </div>
-{/each}
+<div>
+  <label>Follow us on</label>
+  <a href="/" target="_blank">Facebook</a>
+  <a href="/" target="_blank">Instagram</a>
+</div>

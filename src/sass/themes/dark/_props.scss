@@ -1,17 +1,19 @@
 @include prop( primary ) {
   color: col($fg);
   background-color: col($bg);
+  #{get-attr(burger, class)} {
+    > div {
+      background-color: col($fg);
+    }  
+  }
 }
 
 @include prop( sidebar ) {
   color: col($fg);
   &.open {
-    background-color: darken(col($bg), 2%);
-  }
-  #{get-attr(burger, class)} {
     > div {
-      background-color: col($fg);
-    }  
+      background-color: darken(col($bg), 2%);
+    }
   }
 }
 

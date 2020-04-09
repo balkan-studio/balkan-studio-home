@@ -2,12 +2,13 @@
   import Logo from './Wrapper/Logo.svelte';
 </script>
 <style lang='scss'>
-  @import '../sass/utils';
+  @import './sass/utils';
+  @import './sass/vars'; 
   div {
     display: flex;
     flex: 1 1 0;
     align-items: center;
-    max-width: 64em;
+    max-width: $main-max-width + 5em;
     margin-left: auto;
     margin-right: auto;
     padding: 0 1em;
@@ -19,7 +20,7 @@
   
   @include screen(max 1023px) {
     div {
-      justify-content: flex-end;      
+      padding: 0;
     }
   }
 </style>
