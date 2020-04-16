@@ -4,10 +4,13 @@
   import Branding from "$components/Branding.svelte";
   import Sidebar from "$components/Sidebar.svelte";
   //  export let segment;
+  import { platform } from "$stores";
+  let width;
+  $: width, platform.detect(width);
 </script>
 
 <style lang="scss">
-  @import './sass/vars';
+  @import "./sass/vars";
   div {
     margin: 0 auto;
     padding: 0 1em;
@@ -29,6 +32,9 @@
 
   </script>
 </svelte:head>
+
+<svelte:window bind:innerWidth={width} />
+
 <Primary>
   <Sidebar />
 

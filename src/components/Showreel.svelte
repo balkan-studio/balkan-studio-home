@@ -1,6 +1,9 @@
 <script>
   import { onMount } from "svelte";
+  import { videoSource } from "../data/meta";
   import cloudinary from "cloudinary-core";
+  import { platform } from "$stores";
+
   let cl = new cloudinary.Cloudinary({
     cloud_name: "balkan-studio",
     secure: true
@@ -8,8 +11,19 @@
 
   let paused = false;
 
-  const video = cl
-    .videoTag("mini-videos/16.03.Balkan_qalcjw", {
+  const videoDesktop = cl
+    .videoTag(videoSource.desktop, {
+      secure: true,
+      controls: false,
+      autoplay: true,
+      muted: true,
+      loop: true
+    })
+    .transformation()
+    .height("100%")
+    .toHtml();
+  const videoMobile = cl
+    .videoTag(videoSource.mobile, {
       secure: true,
       controls: false,
       autoplay: true,
@@ -40,9 +54,17 @@
     @media (max-width: 1500px) {
       height: 63vh;
     }
+    @media (max-width: 900px) {
+      display: flex;
+      justify-content: center;
+    }
   }
 </style>
 
 <div id="video-wrap">
-  {@html video}
+  {#if $platform === 'mobile'}
+    {@html videoMobile}
+  {:else}
+    {@html videoDesktop}
+  {/if}
 </div>
