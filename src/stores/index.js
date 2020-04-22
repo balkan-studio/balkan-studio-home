@@ -24,3 +24,5 @@ function createPlatform() {
 }
 
 export const platform = createPlatform();
+
+export const collaboratorsToggled = writable(false)

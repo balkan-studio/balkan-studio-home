@@ -1,61 +1,65 @@
 <script>
+  import { platform } from "$stores";
+  import { MARGINS } from "$shared/constants";
+  // components
   import Showreel from "$components/Showreel.svelte";
-  import ContactInfo from "$components/Sidebar/ContactInfo.svelte";
-  import SocialMedia from "$components/Sidebar/SocialMedia.svelte";
+  import Contact from "$components/Contact/Index.svelte";
+  import BalkanSlogan from "$components/BalkanSlogan.svelte";
+  import Branding from "$components/Branding.svelte";
+  import CollaboratorsBTN from "$components/BTN.svelte";
+  import Collaborators from "$components/Collaborators.svelte";
 </script>
 
-<style lang="scss">
-  @import './sass/utils/scale';
-  .wrap {
-    display: flex;
-    flex-direction: column;
-    > div {
-      display: flex; 
-    }
+<style>
+  .page-box {
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    height: 100%;
+    width: 100%;
   }
-  
-  .info { 
+  .contact-video-wrap {
     display: flex;
-    flex-flow: column;
-    padding-right: 3em;
+    height: 100%;
+    width: 100%;
+  }
+  .contact-collabbtn-wrap {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+  }
+  .showreel-collab-wrap {
+    height: 100%;
+    width: 100%;
+    position: relative;
+  }
 
-    > .cl { 
-      margin-top: auto;
-      span {
-        cursor: pointer;
-        text-decoration: underline;
-      }
-    }
-  }
-  @include screen(max 1024px) {
-    .info {
-      display: none;
+  @media (max-width: 900px) {
+    .page-box {
+      display: flex;
+      margin: 0 auto;
     }
   }
 </style>
 
-<svelte:head>
-  <title>Balkan</title>
-</svelte:head>
+<div class="page-box">
 
-<div class="wrap">
-  <h1>
-    A web design studio based in Reykjavík, Iceland.
-    <br />
-    We design and code websites.
-  </h1>
-  <div style="position: relative">
-    <div class="info">
-      <div class="ci">
-        <ContactInfo /> 
+  {#if $platform === 'desktop'}
+    <Branding />
+    <BalkanSlogan />
+  {/if}
+
+  <!-- contact + video -->
+  <div class="contact-video-wrap">
+    {#if $platform === 'desktop'}
+      <div class="contact-collabbtn-wrap" style="--large:{MARGINS.large}">
+        <Contact />
+        <span />
+        <CollaboratorsBTN />
       </div>
-      <div class="sm">
-        <SocialMedia /> 
-      </div> 
-      <div class='cl'>
-        <span> Collaborators </span>
-      </div>
+    {/if}
+    <div class="showreel-collab-wrap">
+      <Showreel />
+      <Collaborators />
     </div>
-    <Showreel />
   </div>
+
 </div>

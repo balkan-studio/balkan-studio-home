@@ -1,8 +1,8 @@
-<script >
-  
+<script>
+
 </script>
 
-<style lang='scss'>
+<style lang="scss">
   main {
     position: relative;
     box-sizing: border-box;
@@ -14,6 +14,6 @@
   }
 </style>
 
-<main id='main'>
-  <slot/>
+<main id="main">
+  <slot />
 </main>

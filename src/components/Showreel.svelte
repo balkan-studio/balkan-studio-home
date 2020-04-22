@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import { videoSource } from "../data/meta";
   import cloudinary from "cloudinary-core";
-  import { platform } from "$stores";
+  import { platform, collaboratorsToggled as toggled } from "$stores";
 
   let cl = new cloudinary.Cloudinary({
     cloud_name: "balkan-studio",
@@ -17,10 +17,10 @@
       controls: false,
       autoplay: true,
       muted: true,
-      loop: true
+      loop: true,
+      style: "position: absolute; top: 0; left: 0; max-height: 100%;"
     })
     .transformation()
-    .height("100%")
     .toHtml();
   const videoMobile = cl
     .videoTag(videoSource.mobile, {
@@ -28,10 +28,11 @@
       controls: false,
       autoplay: true,
       muted: true,
-      loop: true
+      loop: true,
+      style:
+        "position: absolute; top: 0; left: 0; width: 100%; margin: 0 auto; max-height: 100%;"
     })
     .transformation()
-    .height("100%")
     .toHtml();
 
   onMount(() => {
@@ -47,21 +48,16 @@
 </script>
 
 <style lang="scss">
-  div {
+  .video-wrap {
+    height: 100%;
     width: 100%;
-    height: 65vh;
-    top: 0;
-    @media (max-width: 1500px) {
-      height: 63vh;
-    }
-    @media (max-width: 900px) {
-      display: flex;
-      justify-content: center;
-    }
+    position: relative;
+    opacity: var(--opacity);
+    transition: opacity 0.2s;
   }
 </style>
 
-<div id="video-wrap">
+<div style="--opacity:{$toggled ? 0.5 : 1}" class="video-wrap">
   {#if $platform === 'mobile'}
     {@html videoMobile}
   {:else}

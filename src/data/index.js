@@ -1,0 +1,1 @@
+export const collaborators = "studiostudio, iceland university of the arts, tvist, gnaxtype, ármann agnarsson."
