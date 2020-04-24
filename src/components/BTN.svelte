@@ -1,6 +1,9 @@
 <script>
   import { onMount } from "svelte";
-  import { collaboratorsToggled as toggled } from "$stores";
+  import { collaboratorsToggled as toggled, platform } from "$stores";
+  import { DISTANCES } from "$shared/constants";
+
+  const fullsize = "95%";
 
   onMount(() => {
     let regularBlock = document.getElementById("regular");
@@ -8,13 +11,24 @@
 
     regularBlock.addEventListener("mouseover", () => {
       if (!$toggled) {
-        invertedBlock.style.width = "100%";
+        if ($platform === "desktop") {
+          invertedBlock.style.width = fullsize;
+        }
       }
     });
     invertedBlock.addEventListener("mouseleave", () => {
-      if (!$toggled) invertedBlock.style.width = "0%";
+      if (!$toggled) {
+        if ($platform === "desktop") {
+          invertedBlock.style.width = "0%";
+        }
+      }
     });
     invertedBlock.addEventListener("click", () => {
+      toggled.set(!$toggled);
+      console.log("set toggled");
+    });
+    document.getElementById("click-on-me").addEventListener("click", () => {
+      console.log("ripe up u cunts");
       toggled.set(!$toggled);
     });
   });
@@ -28,6 +42,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: var(--distance);
   }
   .block {
     position: absolute;
@@ -43,21 +58,20 @@
     cursor: pointer;
   }
   #inverted {
-    background: white;
+    border-bottom: 1px solid white;
     color: black;
     width: 0%;
     transition: width 0.1s ease-in-out;
   }
   p {
     margin: 0;
+    letter-spacing: -1px;
   }
 </style>
 
-<div class="wrap">
+<div style="--distance:{DISTANCES.front}" class="wrap">
   <div class="block" id="regular">
-    <p>Collaborators</p>
+    <p id="click-on-me">Collaborators</p>
   </div>
-  <div style="--width:{$toggled ? '100%' : '0%'}" class="block" id="inverted">
-    <p>Collaborators</p>
-  </div>
+  <div style="width:{$toggled ? fullsize : '0%'}" class="block" id="inverted" />
 </div>

@@ -1,3 +1,7 @@
+<script>
+  export let nonVerbose = false;
+</script>
+
 <style lang="scss">
   a,
   p {
@@ -6,7 +10,9 @@
 </style>
 
 <div>
-  <label>Follow us on</label>
+  {#if !nonVerbose}
+    <label>Follow us on</label>
+  {/if}
   <p>
     <a href="/" target="_blank">Facebook</a>
   </p>

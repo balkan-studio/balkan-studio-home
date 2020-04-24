@@ -6,3 +6,10 @@ export const MARGINS = {
   medium: "50px",
   large: "125px"
 }
+export const DISTANCES = {
+  burger: "5",
+  mobileMenu: "4",
+  front: "3",
+  middle: "2",
+  back: "1"
+}

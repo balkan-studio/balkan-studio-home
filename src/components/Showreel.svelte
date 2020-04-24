@@ -29,6 +29,7 @@
       autoplay: true,
       muted: true,
       loop: true,
+      playsInline: true,
       style:
         "position: absolute; top: 0; left: 0; width: 100%; margin: 0 auto; max-height: 100%;"
     })
@@ -54,6 +55,11 @@
     position: relative;
     opacity: var(--opacity);
     transition: opacity 0.2s;
+  }
+  @media (max-width: 900px) {
+    .video-wrap {
+      pointer-events: none;
+    }
   }
 </style>
 

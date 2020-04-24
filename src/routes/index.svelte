@@ -13,7 +13,7 @@
 <style>
   .page-box {
     display: grid;
-    grid-template-rows: auto auto 1fr;
+    grid-template-rows: 0.1fr 1fr;
     height: 100%;
     width: 100%;
   }
@@ -44,7 +44,6 @@
 
   {#if $platform === 'desktop'}
     <Branding />
-    <BalkanSlogan />
   {/if}
 
   <!-- contact + video -->

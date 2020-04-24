@@ -1,1 +1,2 @@
-export const collaborators = "studiostudio, iceland university of the arts, tvist, gnaxtype, ármann agnarsson."
+export const collaborators = ["tvist", "studiostudio", "iceland university of the arts", "gnaxtypes", "ármann agnarsson"]
+

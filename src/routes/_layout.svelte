@@ -1,16 +1,42 @@
 <script>
   import Primary from "$components/Primary.svelte";
   import Sidebar from "$components/Sidebar/Index.svelte";
-  import MobileHeader from "../components/MobileHeader.svelte";
+  import MobileHeader from "../components/Mobile/Header.svelte";
+  import MobileFooter from "../components/Mobile/Footer.svelte";
+  import MobileMenu from "../components/Mobile/Menu.svelte";
 
-  import { platform } from "$stores";
+  import ClickZone from "../components/ClickZone.svelte";
+  import Loader from "../components/Loader.svelte";
+
+  import { platform, animationDelay } from "$stores";
   import { MARGINS } from "$shared/constants";
+
+  import { onMount } from "svelte";
+
+  onMount(() => {
+    platform.subscribe(() => {
+      console.log($platform);
+    });
+    document
+      .getElementById("main")
+      .style.setProperty("--vh", `${window.innerHeight * 0.01}px`);
+  });
 
   let width;
   $: width, platform.detect(width);
 </script>
 
 <style>
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      pointer-events: none;
+    }
+    to {
+      opacity: 1;
+      pointer-events: initial;
+    }
+  }
   main {
     height: 100%;
     width: 100%;
@@ -28,15 +54,16 @@
   /* mobile work below */
   @media (max-width: 900px) {
     main {
-      padding: var(--small);
+      padding: 0 var(--small) 0 var(--small);
       grid-template-columns: 1fr;
-      grid-template-rows: 85px 1fr 85px;
+      grid-template-rows: 85px auto 85px;
+      height: 100vh;
+      height: calc(var(--vh, 1vh) * 100);
     }
   }
 </style>
 
 <svelte:head>
-  <title>Balkan Studio</title>
   <script src="js/anime.min.js">
 
   </script>
@@ -45,17 +72,28 @@
 <svelte:window bind:innerWidth={width} />
 
 <Primary>
-
+  <Loader />
   <main
-    style="--small:{MARGINS.small}; --medium:{MARGINS.medium}; --large:{MARGINS.large};">
+    id="main"
+    style="--small:{MARGINS.small}; --medium:{MARGINS.medium}; --large:{MARGINS.large};
+    --animationDelay:{$animationDelay}">
+
+    <!-- þetta lokar collaborators popup ef klikkað er UTAN takkans eða collab texta -->
+    <ClickZone />
 
     {#if $platform === 'desktop'}
       <Sidebar />
     {:else}
       <MobileHeader />
+      <MobileMenu />
     {/if}
     <!-- page contents -->
     <slot />
+
+    {#if $platform === 'mobile'}
+      <MobileFooter />
+    {/if}
+
   </main>
 
 </Primary>

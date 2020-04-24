@@ -1,4 +1,4 @@
-import { writable } from "svelte/store";
+import { writable, readable } from "svelte/store";
 
 // scroll things
 export const scrollPosY = writable(0);
@@ -10,7 +10,7 @@ export const menuOpen = writable(false);
 // platform detection
 // https://svelte.dev/tutorial/custom-stores
 function createPlatform() {
-  const { subscribe, set, update } = writable(0);
+  const { subscribe, set, update } = writable(undefined);
 
   return {
     subscribe,
@@ -26,3 +26,5 @@ function createPlatform() {
 export const platform = createPlatform();
 
 export const collaboratorsToggled = writable(false)
+
+export const animationDelay = readable("1.5s")
