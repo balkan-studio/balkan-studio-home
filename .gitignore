@@ -3,7 +3,9 @@
 /src/node_modules/@sapper/
 yarn-error.log
 /cypress/screenshots/
-/__sapper__/
 
 /src/sass/.ignore/
 /src/sass/.sass-cache/
+
+__sapper__/build
+__sapper__/dev
