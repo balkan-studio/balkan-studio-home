@@ -2,7 +2,7 @@
   import { platform } from "$stores";
   import { MARGINS } from "$shared/constants";
   // components
-  import Showreel from "$components/Showreel.svelte";
+  import Showreel from "$components/Showreel/index.svelte";
   import Contact from "$components/Contact/Index.svelte";
   import BalkanSlogan from "$components/BalkanSlogan.svelte";
   import Branding from "$components/Branding.svelte";

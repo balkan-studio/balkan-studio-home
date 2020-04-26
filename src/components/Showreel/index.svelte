@@ -1,19 +1,22 @@
 <script>
   import { onMount } from "svelte";
-  import { desktop, mobile } from "../data/meta";
+  import DesktopVideo from "./desktop.svelte";
+  import MobileVideo from "./mobile.svelte";
   import { platform, collaboratorsToggled as toggled } from "$stores";
 
-  let paused = false;
+  let paused = true;
 
   onMount(() => {
     let videoElem = document.getElementsByTagName("video")[0];
-    videoElem.addEventListener("click", () => {
-      if (paused) {
-        videoElem.play();
-      } else videoElem.pause();
+    if (videoElem) {
+      videoElem.addEventListener("click", () => {
+        if (paused) {
+          videoElem.play();
+        } else videoElem.pause();
 
-      paused = !paused;
-    });
+        paused = !paused;
+      });
+    }
   });
 </script>
 
@@ -34,8 +37,8 @@
 
 <div style="--opacity:{$toggled ? 0.5 : 1}" class="video-wrap">
   {#if $platform === 'mobile'}
-    {@html mobile}
-  {:else}
-    {@html desktop}
+    <MobileVideo />
+  {:else if $platform === 'desktop'}
+    <DesktopVideo />
   {/if}
 </div>

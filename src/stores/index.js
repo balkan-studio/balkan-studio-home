@@ -16,8 +16,10 @@ function createPlatform() {
     subscribe,
     increment: () => update((n) => n + 1),
     detect: (w) => {
-      if (w <= 900) set("mobile");
-      else set("desktop");
+      if (w) {
+        if (w <= 900) set("mobile");
+        else set("desktop");
+      }
     },
     reset: () => set(0),
   };
