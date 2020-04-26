@@ -1,40 +1,9 @@
 <script>
   import { onMount } from "svelte";
-  import { videoSource } from "../data/meta";
-  import cloudinary from "cloudinary-core";
+  import { desktop, mobile } from "../data/meta";
   import { platform, collaboratorsToggled as toggled } from "$stores";
 
-  let cl = new cloudinary.Cloudinary({
-    cloud_name: "balkan-studio",
-    secure: true
-  });
-
   let paused = false;
-
-  const videoDesktop = cl
-    .videoTag(videoSource.desktop, {
-      secure: true,
-      controls: false,
-      autoplay: true,
-      muted: true,
-      loop: true,
-      style: "position: absolute; top: 0; left: 0; max-height: 100%;"
-    })
-    .transformation()
-    .toHtml();
-  const videoMobile = cl
-    .videoTag(videoSource.mobile, {
-      secure: true,
-      controls: false,
-      autoplay: true,
-      muted: true,
-      loop: true,
-      playsInline: true,
-      style:
-        "position: absolute; top: 0; left: 0; width: 100%; margin: 0 auto; max-height: 100%;"
-    })
-    .transformation()
-    .toHtml();
 
   onMount(() => {
     let videoElem = document.getElementsByTagName("video")[0];
@@ -65,8 +34,8 @@
 
 <div style="--opacity:{$toggled ? 0.5 : 1}" class="video-wrap">
   {#if $platform === 'mobile'}
-    {@html videoMobile}
+    {@html mobile}
   {:else}
-    {@html videoDesktop}
+    {@html desktop}
   {/if}
 </div>
