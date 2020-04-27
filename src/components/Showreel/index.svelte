@@ -29,9 +29,6 @@
     transition: opacity 0.2s;
   }
   @media (max-width: 900px) {
-    .video-wrap {
-      pointer-events: none;
-    }
   }
 </style>
 
