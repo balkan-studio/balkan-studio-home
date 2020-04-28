@@ -55,8 +55,8 @@
   class={$toggled ? 'wrap' : 'wrap hide'}>
   <h1>
     {#each collaborators as collaborator, i}
-      <a href="/">
-        {i === collaborators.length - 1 ? collaborator : collaborator + ', '}
+      <a target="_blank" href={collaborator.url}>
+        {i === collaborators.length - 1 ? collaborator.name : collaborator.name + ', '}
       </a>
     {/each}
   </h1>

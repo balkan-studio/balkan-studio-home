@@ -2,6 +2,8 @@
   import { MARGINS } from "$shared/constants";
   import BalkanSlogan from "$components/BalkanSlogan.svelte";
 
+  import { SocialMediaLinks } from "$data";
+
   let email = "balkan@balkan.studio";
   let phone = "+354 772 0805";
 </script>
@@ -39,10 +41,10 @@
 
   <div class="item-wrap">
     <p>
-      <a href="/" target="_blank">Facebook</a>
+      <a href={SocialMediaLinks.facebook} target="_blank">Facebook</a>
     </p>
     <p>
-      <a href="/" target="_blank">Instagram</a>
+      <a href={SocialMediaLinks.instagram} target="_blank">Instagram</a>
     </p>
   </div>
 

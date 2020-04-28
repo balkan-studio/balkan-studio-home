@@ -28,8 +28,6 @@
     opacity: var(--opacity);
     transition: opacity 0.2s;
   }
-  @media (max-width: 900px) {
-  }
 </style>
 
 <div style="--opacity:{$toggled ? 0.5 : 1}" class="video-wrap">

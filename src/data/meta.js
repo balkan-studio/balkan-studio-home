@@ -5,7 +5,6 @@ const videoSource = {
   mobile: "mobile_video_11.04.2020_ifcwni",
 };
 
-
 let cl = new cloudinary.Cloudinary({
   cloud_name: "balkan-studio",
   secure: true
