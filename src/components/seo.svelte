@@ -1,7 +1,7 @@
 <script>
-  const metadata = {
+  let metadata = {
     description: "Web design studio based in Reykjavík Iceland.",
-    image: "./BS_Studio.png",
+    image: "/BS_Studio.png",
     url: "https://www.balkan.studio/",
     title: "Balkan Studio"
   };

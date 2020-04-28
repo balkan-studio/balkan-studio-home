@@ -5,7 +5,6 @@
   import MobileFooter from "../components/Mobile/Footer.svelte";
   import MobileMenu from "../components/Mobile/Menu.svelte";
   import SEO from "../components/seo.svelte";
-
   import ClickZone from "../components/ClickZone.svelte";
   import Loader from "../components/Loader.svelte";
 
