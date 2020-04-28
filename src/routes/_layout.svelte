@@ -4,6 +4,7 @@
   import MobileHeader from "../components/Mobile/Header.svelte";
   import MobileFooter from "../components/Mobile/Footer.svelte";
   import MobileMenu from "../components/Mobile/Menu.svelte";
+  import SEO from "../components/seo.svelte";
 
   import ClickZone from "../components/ClickZone.svelte";
   import Loader from "../components/Loader.svelte";
@@ -67,6 +68,7 @@
   <script src="js/anime.min.js">
 
   </script>
+  <SEO />
 </svelte:head>
 
 <svelte:window bind:innerWidth={width} />
