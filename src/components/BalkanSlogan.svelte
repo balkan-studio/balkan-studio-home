@@ -5,13 +5,12 @@
 <style>
   p {
     font-size: var(--size);
+    display: flex;
+    flex-direction: column;
   }
 </style>
 
 <p style="--size:{$platform === `mobile` ? '3rem' : 'inital'}">
-  A web design studio
-  {#if $platform === 'desktop'}
-    <br />
-  {/if}
-  based in Reykjavík, Iceland.
+  <span>A web design studio</span>
+  <span>based in Reykjavík, Iceland.</span>
 </p>
