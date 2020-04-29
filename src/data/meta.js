@@ -31,8 +31,6 @@ export const mobile = cl
     muted: true,
     loop: true,
     playsInline: true,
-    quality: "auto",
-    fetchFormat: "auto",
     style:
       "position: absolute; top: 0; left: 0; width: 100%; margin: 0 auto; max-height: 100%;",
     eager_async: true

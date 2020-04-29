@@ -8,22 +8,20 @@
   import ClickZone from "../components/ClickZone.svelte";
   import Loader from "../components/Loader.svelte";
 
-  import { platform, animationDelay } from "$stores";
+  import { platform, animationDelay, videoSwitch } from "$stores";
   import { MARGINS } from "$shared/constants";
 
   import { onMount } from "svelte";
 
   onMount(() => {
-    platform.subscribe(() => {
-      console.log($platform);
-    });
     document
       .getElementById("main")
       .style.setProperty("--vh", `${window.innerHeight * 0.01}px`);
   });
 
-  let width;
+  let width, height;
   $: width, platform.detect(width);
+  $: (width, height), videoSwitch.detect(width, height);
 </script>
 
 <style>
@@ -52,7 +50,7 @@
   }
 
   /* mobile work below */
-  @media (max-width: 900px) {
+  @media (max-width: 667px) {
     main {
       padding: 0 var(--small) 0 var(--small);
       grid-template-columns: 1fr;
@@ -70,7 +68,7 @@
   <SEO />
 </svelte:head>
 
-<svelte:window bind:innerWidth={width} />
+<svelte:window bind:innerWidth={width} bind:innerHeight={height} />
 
 <Primary>
   <Loader />

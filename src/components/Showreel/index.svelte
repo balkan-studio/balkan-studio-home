@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import DesktopVideo from "./desktop.svelte";
   import MobileVideo from "./mobile.svelte";
-  import { platform, collaboratorsToggled as toggled } from "$stores";
+  import { videoSwitch, collaboratorsToggled as toggled } from "$stores";
 
   let paused = true;
 
@@ -31,9 +31,9 @@
 </style>
 
 <div style="--opacity:{$toggled ? 0.5 : 1}" class="video-wrap">
-  {#if $platform === 'mobile'}
+  {#if $videoSwitch === 'portrait'}
     <MobileVideo />
-  {:else if $platform === 'desktop'}
+  {:else if $videoSwitch === 'landscape'}
     <DesktopVideo />
   {/if}
 </div>

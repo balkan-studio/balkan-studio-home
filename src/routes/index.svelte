@@ -32,7 +32,7 @@
     position: relative;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 667px) {
     .page-box {
       display: flex;
       margin: 0 auto;

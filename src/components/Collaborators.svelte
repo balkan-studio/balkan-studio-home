@@ -43,7 +43,7 @@
   }
 
   /* mobile work downstairs */
-  @media (max-width: 900px) {
+  @media (max-width: 667px) {
     h1 {
       font-size: 5vh;
     }

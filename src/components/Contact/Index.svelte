@@ -22,7 +22,7 @@
   p {
     margin: 0 0 0.5rem;
   }
-  @media (max-width: 900px) {
+  @media (max-width: 667px) {
     .box {
       padding: 0 var(--medium) 0 0;
     }
