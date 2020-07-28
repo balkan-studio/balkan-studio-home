@@ -40,12 +40,12 @@
   </div>
 
   <div class="item-wrap">
-    <p>
+    <!-- <p>
       <a href={SocialMediaLinks.facebook} target="_blank">Facebook</a>
     </p>
     <p>
       <a href={SocialMediaLinks.instagram} target="_blank">Instagram</a>
-    </p>
+    </p> -->
   </div>
 
 </div>
