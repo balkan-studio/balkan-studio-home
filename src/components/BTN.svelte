@@ -25,10 +25,8 @@
     });
     invertedBlock.addEventListener("click", () => {
       toggled.set(!$toggled);
-      console.log("set toggled");
     });
     document.getElementById("click-on-me").addEventListener("click", () => {
-      console.log("ripe up u cunts");
       toggled.set(!$toggled);
     });
   });

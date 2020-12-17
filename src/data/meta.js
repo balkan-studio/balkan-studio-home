@@ -1,13 +1,13 @@
 import cloudinary from "cloudinary-core";
 
 const videoSource = {
-  desktop: "Balkan_Desktop_11.04.2020_ulrfj7",
-  mobile: "mobile_video_11.04.2020_ifcwni",
+  desktop: "Balkan_Desktop_11.04.2020_mychcl",
+  mobile: "Balkan_Desktop_11.04.2020_mychcl",
 };
 
 let cl = new cloudinary.Cloudinary({
-  cloud_name: "balkan-studio",
-  secure: true
+  cloud_name: "dxlptabef",
+  secure: true,
 });
 
 export const desktop = cl
@@ -17,10 +17,10 @@ export const desktop = cl
     autoplay: true,
     muted: true,
     loop: true,
-    style: "position: absolute; top: 0; left: 0; max-height: 100%;"
+    style: "position: absolute; top: 0; left: 0; max-height: 100%;",
   })
   .transformation({
-    eager_async: true
+    eager_async: true,
   })
   .toHtml();
 export const mobile = cl
@@ -33,9 +33,9 @@ export const mobile = cl
     playsInline: true,
     style:
       "position: absolute; top: 0; left: 0; width: 100%; margin: 0 auto; max-height: 100%;",
-    eager_async: true
+    eager_async: true,
   })
   .transformation({
-    eager_async: true
+    eager_async: true,
   })
   .toHtml();

@@ -3,7 +3,6 @@
   import { collaboratorsToggled as toggled } from "$stores";
 
   const closeZone = () => {
-    console.log("close it up!");
     toggled.set(false);
   };
 </script>
